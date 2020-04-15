@@ -15,6 +15,11 @@ namespace Waybit.Abstractions.Repository.Redis
 		private readonly IDatabaseAsync _database;
 		private readonly IEntityConverter _converter;
 		private readonly IRedisKeyStrategy<TKey> _redisKeyStrategy;
+		
+		/// <summary>
+		/// Entity redis router
+		/// </summary>
+		protected Router.Router Router => new Router.Router(typeof(TEntity).Name.ToLowerInvariant());
 
 		/// <summary>
 		/// Initialize instance of class <see cref="Repository"/>
@@ -40,7 +45,7 @@ namespace Waybit.Abstractions.Repository.Redis
 		/// <inheritdoc />
 		public async Task<TEntity> GetByIdAsync(TKey id, CancellationToken cancellationToken)
 		{
-			string key = id.ToString();
+			string key = Router[id.ToString()];
 			
 			RedisValue value = await _database.StringGetAsync(key, CommandFlags.PreferSlave);
 
@@ -50,19 +55,21 @@ namespace Waybit.Abstractions.Repository.Redis
 		/// <inheritdoc />
 		public async Task<TKey> AddAsync(TEntity entity, CancellationToken cancellationToken)
 		{
-			TKey key = _redisKeyStrategy.GenerateNewKey();
+			TKey id = _redisKeyStrategy.GenerateNewKey();
 			string value = _converter.Serialize(entity);
 
-			await _database.StringSetAsync(key.ToString(), value, _redisKeyStrategy.Expiry);
+			string key = Router[id.ToString()];
 
-			return key;
+			await _database.StringSetAsync(key, value, _redisKeyStrategy.Expiry);
+
+			return id;
 		}
 
 		/// <inheritdoc />
 		public async Task UpdateAsync(TEntity entity, CancellationToken cancellationToken)
 		{
 			string value = _converter.Serialize(entity);
-			string key = entity.Id.ToString();
+			string key = Router[entity.Id.ToString()];
 			
 			await _database.StringSetAsync(key, value, _redisKeyStrategy.Expiry);
 		}

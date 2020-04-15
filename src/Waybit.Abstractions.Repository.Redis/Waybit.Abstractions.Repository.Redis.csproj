@@ -19,4 +19,8 @@
         <PackageReference Include="Waybit.Abstractions.Domain" Version="1.0.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Waybit.Abstractions.Repository.Redis.Router\Waybit.Abstractions.Repository.Redis.Router.csproj" />
+    </ItemGroup>
+
 </Project>
