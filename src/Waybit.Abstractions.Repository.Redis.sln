@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Waybit.Abstractions.Repository.Redis", "Waybit.Abstractions.Repository.Redis\Waybit.Abstractions.Repository.Redis.csproj", "{73CC2655-1C8F-45A7-B657-5C04C806703A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Waybit.Abstractions.Repository.Redis.GuidKeyStrategy", "Waybit.Abstractions.Repository.Redis.GuidKeyStrategy\Waybit.Abstractions.Repository.Redis.GuidKeyStrategy.csproj", "{50A124C9-0BAE-4783-82C8-341AE43FC014}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Waybit.Abstractions.Repository.Redis.JsonConverter", "Waybit.Abstractions.Repository.Redis.JsonConverter\Waybit.Abstractions.Repository.Redis.JsonConverter.csproj", "{1ED37A85-022A-4113-B4AB-AB1789398DA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Waybit.Abstractions.Repository.Redis.GuidKeyStrategy.UnitTests", "Waybit.Abstractions.Repository.Redis.GuidKeyStrategy.UnitTests\Waybit.Abstractions.Repository.Redis.GuidKeyStrategy.UnitTests.csproj", "{4B0FBA29-8113-4932-9330-53E29A1ED29F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Waybit.Abstractions.Repository.Redis.JsonConverter.UnitTests", "Waybit.Abstractions.Repository.Redis.JsonConverter.UnitTests\Waybit.Abstractions.Repository.Redis.JsonConverter.UnitTests.csproj", "{044EC9D6-CBB8-415F-94F6-5284E8EC7D40}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73CC2655-1C8F-45A7-B657-5C04C806703A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73CC2655-1C8F-45A7-B657-5C04C806703A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73CC2655-1C8F-45A7-B657-5C04C806703A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73CC2655-1C8F-45A7-B657-5C04C806703A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50A124C9-0BAE-4783-82C8-341AE43FC014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50A124C9-0BAE-4783-82C8-341AE43FC014}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50A124C9-0BAE-4783-82C8-341AE43FC014}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50A124C9-0BAE-4783-82C8-341AE43FC014}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ED37A85-022A-4113-B4AB-AB1789398DA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ED37A85-022A-4113-B4AB-AB1789398DA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ED37A85-022A-4113-B4AB-AB1789398DA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ED37A85-022A-4113-B4AB-AB1789398DA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B0FBA29-8113-4932-9330-53E29A1ED29F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B0FBA29-8113-4932-9330-53E29A1ED29F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B0FBA29-8113-4932-9330-53E29A1ED29F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B0FBA29-8113-4932-9330-53E29A1ED29F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{044EC9D6-CBB8-415F-94F6-5284E8EC7D40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{044EC9D6-CBB8-415F-94F6-5284E8EC7D40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{044EC9D6-CBB8-415F-94F6-5284E8EC7D40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{044EC9D6-CBB8-415F-94F6-5284E8EC7D40}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

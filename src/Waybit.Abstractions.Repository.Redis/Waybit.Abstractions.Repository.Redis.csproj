@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+        <PackageId>Waybit.Abstractions.Repository.Redis</PackageId>
+        <Authors>sankovlex</Authors>
+        <PackageLicenseUrl>https://github.com/waybit/Waybit.Abstractions.Repository.Redis/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PackageProjectUrl>https://github.com/waybit/Waybit.Abstractions.Repository.Redis</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/waybit/Waybit.Abstractions.Repository.Redis</RepositoryUrl>
+        <PackageTags>ddd, repository, redis</PackageTags>
+        <Copyright>Waybit © 2020 | https://waybit.ru</Copyright>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="StackExchange.Redis" Version="2.1.30" />
+        <PackageReference Include="Waybit.Abstractions.Domain" Version="1.0.1" />
+    </ItemGroup>
+
+</Project>

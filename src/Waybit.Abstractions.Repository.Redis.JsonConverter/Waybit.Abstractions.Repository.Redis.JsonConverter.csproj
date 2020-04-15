@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+        <PackageId>Waybit.Abstractions.Repository.Redis.JsonConverter</PackageId>
+        <Authors>sankovlex</Authors>
+        <PackageLicenseUrl>https://github.com/waybit/Waybit.Abstractions.Repository.Redis/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PackageProjectUrl>https://github.com/waybit/Waybit.Abstractions.Repository.Redis</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/waybit/Waybit.Abstractions.Repository.Redis</RepositoryUrl>
+        <PackageTags>ddd, repository, redis, json</PackageTags>
+        <Copyright>Waybit © 2020 | https://waybit.ru</Copyright>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Waybit.Abstractions.Repository.Redis\Waybit.Abstractions.Repository.Redis.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    </ItemGroup>
+
+</Project>
