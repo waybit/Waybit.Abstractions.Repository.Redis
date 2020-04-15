@@ -17,6 +17,6 @@ dotnet pack $SLN_PATH \
   -p:IncludeSymbols=true \
   -p:SymbolPackageFormat=snupkg
 
-dotnet nuget push "./" \
+dotnet nuget push "./*.nupkg" \
   -s "https://api.nuget.org/v3/index.json" \
   -k "$API_KEY"

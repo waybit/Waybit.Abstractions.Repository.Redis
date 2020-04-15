@@ -4,7 +4,7 @@ TAG=$2
 
 CONFIGURATION='Release'
 VERSION="${TAG}"
-SLN_PATH="./src/Waybit.Abstractions.Repository.EntityFrameworkCore.sln"
+SLN_PATH="./src/Waybit.Abstractions.Repository.Redis.sln"
 
 echo "Configuration: ${CONFIGURATION}"
 echo "Version: ${VERSION}"
@@ -16,6 +16,6 @@ dotnet pack $SLN_PATH \
   -p:IncludeSymbols=true \
   -p:SymbolPackageFormat=snupkg
 
-dotnet nuget push "./Waybit.Abstractions.Repository.EntityFrameworkCore.${VERSION}.nupkg" \
+dotnet nuget push "./*.nupkg" \
   -s "https://api.nuget.org/v3/index.json" \
   -k "$API_KEY"
