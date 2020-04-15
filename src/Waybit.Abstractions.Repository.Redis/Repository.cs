@@ -55,7 +55,10 @@ namespace Waybit.Abstractions.Repository.Redis
 		/// <inheritdoc />
 		public virtual async Task<TKey> AddAsync(TEntity entity, CancellationToken cancellationToken)
 		{
-			TKey id = _redisKeyStrategy.GenerateNewKey();
+			TKey id = entity.Id.Equals(default)
+				? _redisKeyStrategy.GenerateNewKey()
+				: entity.Id;
+
 			string value = _converter.Serialize(entity);
 
 			string key = Router[id.ToString()];
