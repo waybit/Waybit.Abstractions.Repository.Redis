@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+        <PackageId>Waybit.Abstractions.Repository.Redis.Router</PackageId>
+        <Authors>sankovlex</Authors>
+        <PackageLicenseUrl>https://github.com/waybit/Waybit.Abstractions.Repository.Redis/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PackageProjectUrl>https://github.com/waybit/Waybit.Abstractions.Repository.Redis</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/waybit/Waybit.Abstractions.Repository.Redis</RepositoryUrl>
+        <PackageTags>ddd, repository, redis, router</PackageTags>
+        <Copyright>Waybit © 2020 | https://waybit.ru</Copyright>
+    </PropertyGroup>
+
+</Project>

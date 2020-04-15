@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Waybit.Abstractions.Reposit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Waybit.Abstractions.Repository.Redis.JsonConverter.UnitTests", "Waybit.Abstractions.Repository.Redis.JsonConverter.UnitTests\Waybit.Abstractions.Repository.Redis.JsonConverter.UnitTests.csproj", "{044EC9D6-CBB8-415F-94F6-5284E8EC7D40}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Waybit.Abstractions.Repository.Redis.Router", "Waybit.Abstractions.Repository.Redis.Router\Waybit.Abstractions.Repository.Redis.Router.csproj", "{6470F668-F53F-40F0-A6D2-D6A2C788FCC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Waybit.Abstractions.Repository.Redis.Router.UnitTests", "Waybit.Abstractions.Repository.Redis.Router.UnitTests\Waybit.Abstractions.Repository.Redis.Router.UnitTests.csproj", "{91AAF6C5-E3A2-48CB-8944-A36A9192C6C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +40,13 @@ Global
 		{044EC9D6-CBB8-415F-94F6-5284E8EC7D40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{044EC9D6-CBB8-415F-94F6-5284E8EC7D40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{044EC9D6-CBB8-415F-94F6-5284E8EC7D40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6470F668-F53F-40F0-A6D2-D6A2C788FCC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6470F668-F53F-40F0-A6D2-D6A2C788FCC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6470F668-F53F-40F0-A6D2-D6A2C788FCC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6470F668-F53F-40F0-A6D2-D6A2C788FCC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91AAF6C5-E3A2-48CB-8944-A36A9192C6C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91AAF6C5-E3A2-48CB-8944-A36A9192C6C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91AAF6C5-E3A2-48CB-8944-A36A9192C6C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91AAF6C5-E3A2-48CB-8944-A36A9192C6C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
