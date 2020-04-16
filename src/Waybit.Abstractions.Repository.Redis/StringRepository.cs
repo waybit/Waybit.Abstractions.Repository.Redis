@@ -38,18 +38,16 @@ namespace Waybit.Abstractions.Repository.Redis
 		public virtual async Task<TEntity> GetByIdAsync(TKey id, CancellationToken cancellationToken)
 		{
 			string key = Router[id.ToString()];
-			
 			RedisValue value = await Database.StringGetAsync(key, CommandFlags.PreferSlave);
 
 			return Converter.Deserialize<TEntity, TKey>(value);
 		}
 
 		/// <inheritdoc />
-		public virtual async Task<TKey> AddAsync(TEntity entity, CancellationToken cancellationToken)
+		public async Task<TKey> SaveAsync(TEntity entity, CancellationToken cancellationToken)
 		{
-			string value = Converter.Serialize(entity);
-
 			string key = Router[entity.Id.ToString()];
+			string value = Converter.Serialize(entity);
 
 			await Database.StringSetAsync(key, value);
 
@@ -57,12 +55,10 @@ namespace Waybit.Abstractions.Repository.Redis
 		}
 
 		/// <inheritdoc />
-		public virtual async Task UpdateAsync(TEntity entity, CancellationToken cancellationToken)
+		public async Task RemoveAsync(TEntity entity, CancellationToken cancellationToken)
 		{
-			string value = Converter.Serialize(entity);
 			string key = Router[entity.Id.ToString()];
-			
-			await Database.StringSetAsync(key, value);
+			await Database.KeyDeleteAsync(key);
 		}
 	}
 }

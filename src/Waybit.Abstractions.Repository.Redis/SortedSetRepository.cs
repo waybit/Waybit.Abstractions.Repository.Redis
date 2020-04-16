@@ -45,14 +45,8 @@ namespace Waybit.Abstractions.Repository.Redis
 			return GetFromSortedSetEntry(entry);
 		}
 
-		/// <summary>
-		/// Factory method for getting score value from entity
-		/// </summary>
-		/// <param name="entity">Entity</param>
-		public abstract int GetScore(TEntity entity);
-		
 		/// <inheritdoc />
-		public async Task<TKey> AddAsync(TEntity entity, CancellationToken cancellationToken)
+		public async Task<TKey> SaveAsync(TEntity entity, CancellationToken cancellationToken)
 		{
 			string key = Router[entity.Id.ToString()];
 			string value = Converter.Serialize(entity);
@@ -64,12 +58,19 @@ namespace Waybit.Abstractions.Repository.Redis
 		}
 
 		/// <inheritdoc />
-		public Task UpdateAsync(TEntity entity, CancellationToken cancellationToken)
+		public async Task RemoveAsync(TEntity entity, CancellationToken cancellationToken)
 		{
-			return Task.FromException<IEnumerable<TEntity>>(
-				new NotSupportedException(
-					$"Cannot update entity from this repository {this.GetType().FullName}"));
+			string key = Router[entity.Id.ToString()];
+			string value = Converter.Serialize(entity);
+
+			await Database.SortedSetRemoveAsync(key, value);
 		}
+
+		/// <summary>
+		/// Factory method for getting score value from entity
+		/// </summary>
+		/// <param name="entity">Entity</param>
+		public abstract int GetScore(TEntity entity);
 		
 		private TEntity GetFromSortedSetEntry(SortedSetEntry? entry)
 		{

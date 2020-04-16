@@ -16,7 +16,7 @@
 
     <ItemGroup>
         <PackageReference Include="StackExchange.Redis" Version="2.1.30" />
-        <PackageReference Include="Waybit.Abstractions.Domain" Version="1.0.1" />
+        <PackageReference Include="Waybit.Abstractions.Domain" Version="1.0.1-unstable-10" />
     </ItemGroup>
 
     <ItemGroup>
