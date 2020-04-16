@@ -12,22 +12,17 @@ namespace Waybit.Abstractions.Repository.Redis
 	/// </summary>
 	/// <typeparam name="TEntity">Entity type</typeparam>
 	/// <typeparam name="TKey">Entity id type</typeparam>
-	public class SortedSetRepository<TEntity, TKey> : AbstractRepository<TEntity, TKey>, IRepository<TEntity, TKey>
+	public abstract class SortedSetRepository<TEntity, TKey> : AbstractRepository<TEntity, TKey>, IRepository<TEntity, TKey>
 		where TKey : IEquatable<TKey>
 		where TEntity : Entity<TKey>, IAggregateRoot
 	{
-		private readonly IScoreFetcher<TEntity, TKey> _scoreFetcher;
-
 		/// <inheritdoc />
 		protected SortedSetRepository(
 			IDatabaseAsync database,
 			IEntityConverter converter,
-			IRedisKeyStrategy<TKey> redisKeyStrategy,
-			IScoreFetcher<TEntity, TKey> scoreFetcher)
+			IRedisKeyStrategy<TKey> redisKeyStrategy)
 			: base(database, converter, redisKeyStrategy)
 		{
-			_scoreFetcher = scoreFetcher
-				?? throw new ArgumentNullException(nameof(scoreFetcher));
 		}
 		
 		/// <inheritdoc />
@@ -51,13 +46,19 @@ namespace Waybit.Abstractions.Repository.Redis
 			return GetFromSortedSetEntry(entry);
 		}
 
+		/// <summary>
+		/// Factory method for getting score value from entity
+		/// </summary>
+		/// <param name="entity">Entity</param>
+		public abstract int GetScore(TEntity entity);
+		
 		/// <inheritdoc />
 		public async Task<TKey> AddAsync(TEntity entity, CancellationToken cancellationToken)
 		{
 			string key = Router[entity.Id.ToString()];
 			string value = Converter.Serialize(entity);
 
-			int score = _scoreFetcher.FetchScore(entity);
+			int score = GetScore(entity);
 			await Database.SortedSetAddAsync(key, value, score, CommandFlags.PreferMaster);
 
 			return entity.Id;
