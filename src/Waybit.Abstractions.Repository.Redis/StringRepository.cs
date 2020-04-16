@@ -7,31 +7,24 @@ using Waybit.Abstractions.Domain;
 
 namespace Waybit.Abstractions.Repository.Redis
 {
-	/// <inheritdoc />
-	public abstract class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
+	/// <summary>
+	/// Used string redis type
+	/// </summary>
+	/// <typeparam name="TEntity">Entity type</typeparam>
+	/// <typeparam name="TKey">Entity id type</typeparam>
+	public abstract class StringRepository<TEntity, TKey> : AbstractRepository<TEntity, TKey>, IRepository<TEntity, TKey>
 		where TKey : IEquatable<TKey>
 		where TEntity : Entity<TKey>, IAggregateRoot
 	{
-		private readonly IDatabaseAsync _database;
-		private readonly IEntityConverter _converter;
-		private readonly IRedisKeyStrategy<TKey> _redisKeyStrategy;
-		
-		/// <summary>
-		/// Entity redis router
-		/// </summary>
-		protected Router.Router Router => new Router.Router(typeof(TEntity).Name.ToLowerInvariant());
-
 		/// <summary>
 		/// Initialize instance of class <see cref="Repository"/>
 		/// </summary>
-		protected Repository(
+		protected StringRepository(
 			IDatabaseAsync database,
 			IEntityConverter converter,
 			IRedisKeyStrategy<TKey> redisKeyStrategy)
+			: base(database, converter, redisKeyStrategy)
 		{
-			_database = database ?? throw new ArgumentNullException(nameof(database));
-			_converter = converter ?? throw new ArgumentNullException(nameof(converter));
-			_redisKeyStrategy = redisKeyStrategy ?? throw new ArgumentNullException(nameof(redisKeyStrategy));
 		}
 
 		/// <inheritdoc />
@@ -47,23 +40,23 @@ namespace Waybit.Abstractions.Repository.Redis
 		{
 			string key = Router[id.ToString()];
 			
-			RedisValue value = await _database.StringGetAsync(key, CommandFlags.PreferSlave);
+			RedisValue value = await Database.StringGetAsync(key, CommandFlags.PreferSlave);
 
-			return _converter.Deserialize<TEntity, TKey>(value);
+			return Converter.Deserialize<TEntity, TKey>(value);
 		}
 
 		/// <inheritdoc />
 		public virtual async Task<TKey> AddAsync(TEntity entity, CancellationToken cancellationToken)
 		{
 			TKey id = entity.Id.Equals(default)
-				? _redisKeyStrategy.GenerateNewKey()
+				? RedisKeyStrategy.GenerateNewKey()
 				: entity.Id;
 
-			string value = _converter.Serialize(entity);
+			string value = Converter.Serialize(entity);
 
 			string key = Router[id.ToString()];
 
-			await _database.StringSetAsync(key, value, _redisKeyStrategy.Expiry);
+			await Database.StringSetAsync(key, value, RedisKeyStrategy.Expiry);
 
 			return id;
 		}
@@ -71,10 +64,10 @@ namespace Waybit.Abstractions.Repository.Redis
 		/// <inheritdoc />
 		public virtual async Task UpdateAsync(TEntity entity, CancellationToken cancellationToken)
 		{
-			string value = _converter.Serialize(entity);
+			string value = Converter.Serialize(entity);
 			string key = Router[entity.Id.ToString()];
 			
-			await _database.StringSetAsync(key, value, _redisKeyStrategy.Expiry);
+			await Database.StringSetAsync(key, value, RedisKeyStrategy.Expiry);
 		}
 	}
 }
