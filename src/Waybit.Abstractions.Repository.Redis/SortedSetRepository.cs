@@ -19,9 +19,8 @@ namespace Waybit.Abstractions.Repository.Redis
 		/// <inheritdoc />
 		protected SortedSetRepository(
 			IDatabaseAsync database,
-			IEntityConverter converter,
-			IRedisKeyStrategy<TKey> redisKeyStrategy)
-			: base(database, converter, redisKeyStrategy)
+			IEntityConverter converter)
+			: base(database, converter)
 		{
 		}
 		

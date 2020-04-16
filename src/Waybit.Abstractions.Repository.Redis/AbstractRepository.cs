@@ -27,23 +27,16 @@ namespace Waybit.Abstractions.Repository.Redis
 		/// Value converter
 		/// </summary>
 		protected IEntityConverter Converter { get; private set; }
-		
-		/// <summary>
-		/// Redis key generation strategy
-		/// </summary>
-		protected IRedisKeyStrategy<TKey> RedisKeyStrategy { get; private set; }
 
 		/// <summary>
 		/// Initialize instance of class <see cref="Repository"/>
 		/// </summary>
 		protected AbstractRepository(
 			IDatabaseAsync database,
-			IEntityConverter converter,
-			IRedisKeyStrategy<TKey> redisKeyStrategy)
+			IEntityConverter converter)
 		{
 			Database = database ?? throw new ArgumentNullException(nameof(database));
 			Converter = converter ?? throw new ArgumentNullException(nameof(converter));
-			RedisKeyStrategy = redisKeyStrategy ?? throw new ArgumentNullException(nameof(redisKeyStrategy));
 		}
 	}
 }
